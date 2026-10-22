@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="bn">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#111827">
+  <title>Gadget Vaxo | Smart Gadgets</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#" aria-label="Gadget Vaxo home"><span class="brand-mark">GV</span><span>Gadget <b>Vaxo</b><small>SMART GADGETS. SIMPLE SHOPPING.</small></span></a>
+    <button id="adminOpen" class="text-button" type="button">Admin</button>
+  </header>
+  <main>
+    <section class="hero">
+      <span class="eyebrow">YOUR EVERYDAY TECH STORE</span>
+      <h1>Upgrade your<br><em>everyday setup.</em></h1>
+      <p>Useful gadgets, gaming accessories and everyday tech — all in one place.</p>
+      <a class="primary-btn" href="#products">Shop products <span>↗</span></a>
+      <div class="hero-note"><span class="dot"></span> COD available · Easy ordering</div>
+      <div class="hero-art" aria-hidden="true"><div class="orb orb-a"></div><div class="orb orb-b"></div><div class="device">GV<span>+</span></div><div class="art-label">TECH<br>MADE SIMPLE</div></div>
+    </section>
+    <section class="trust-row"><div><b>10</b><span>Starter products</span></div><div><b>COD</b><span>Cash on delivery</span></div><div><b>Easy</b><span>Order process</span></div></section>
+    <section class="section" id="products">
+      <div class="section-heading"><div><span class="eyebrow">THE COLLECTION</span><h2>Explore gadgets</h2></div><span id="productCount" class="count-pill">10 products</span></div>
+      <div class="search-row"><label class="searchbox"><span>⌕</span><input id="searchInput" type="search" placeholder="Search gadgets..." aria-label="Search products"></label><select id="categoryFilter" aria-label="Filter by category"><option value="all">All categories</option><option>Audio</option><option>Gaming</option><option>Mobile</option><option>Power</option><option>Accessories</option></select></div>
+      <div id="productGrid" class="product-grid"></div>
+    </section>
+    <section class="about-strip"><div class="about-icon">✦</div><div><h3>Shopping made simple.</h3><p>Choose your gadget, add it to your cart, and place your order in a few steps.</p></div></section>
+  </main>
+  <footer><a class="brand footer-brand" href="#"><span class="brand-mark">GV</span><span>Gadget <b>Vaxo</b><small>SMART GADGETS. SIMPLE SHOPPING.</small></span></a><p>© <span id="year"></span> Gadget Vaxo. Demo storefront.</p><p class="fineprint">Product names, prices and images are sample placeholders. Replace them before selling.</p></footer>
+
+  <button id="cartFab" class="cart-fab" type="button" aria-label="Open cart">Bag <span id="cartCount">0</span></button>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+  <div id="cartModal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="cartTitle">
+    <div class="modal-backdrop" data-close="cartModal"></div><section class="modal-panel">
+      <div class="modal-head"><div><span class="eyebrow">YOUR SELECTION</span><h2 id="cartTitle">Shopping bag</h2></div><button class="icon-btn" data-close="cartModal" aria-label="Close">×</button></div>
+      <div id="cartItems" class="cart-items"></div>
+      <div class="cart-total"><span>Total</span><b id="cartTotal">৳0</b></div>
+      <button id="checkoutOpen" class="primary-btn full" type="button">Continue to checkout <span>→</span></button>
+    </section>
+  </div>
+  <div id="checkoutModal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="checkoutTitle">
+    <div class="modal-backdrop" data-close="checkoutModal"></div><section class="modal-panel">
+      <div class="modal-head"><div><span class="eyebrow">ALMOST THERE</span><h2 id="checkoutTitle">Delivery details</h2></div><button class="icon-btn" data-close="checkoutModal" aria-label="Close">×</button></div>
+      <form id="checkoutForm" class="form-stack">
+        <label>Full name<input name="name" required maxlength="80" placeholder="Your name"></label>
+        <label>Phone number<input name="phone" required inputmode="tel" pattern="[0-9+() -]{8,20}" placeholder="01XXXXXXXXX"></label>
+        <label>Delivery address<textarea name="address" required maxlength="350" rows="3" placeholder="House, road, area, district"></textarea></label>
+        <label>Payment method<select name="payment"><option value="Cash on Delivery">Cash on Delivery (COD)</option><option value="Online payment">Online payment (not yet connected)</option></select></label>
+        <p class="form-hint">This starter demo stores orders only in this browser. Online payment is not connected yet.</p>
+        <button class="primary-btn full" type="submit">Place order <span>✓</span></button>
+      </form>
+    </section>
+  </div>
+  <div id="successModal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="successTitle">
+    <div class="modal-backdrop" data-close="successModal"></div><section class="modal-panel success-panel"><div class="success-icon">✓</div><h2 id="successTitle">Order saved!</h2><p id="successText">Your demo order has been saved.</p><p class="form-hint">Remember: this is a demo, not a live order system.</p><button class="primary-btn full" data-close="successModal">Continue shopping</button></section>
+  </div>
+
+  <div id="adminModal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="adminTitle">
+    <div class="modal-backdrop" data-close="adminModal"></div><section class="modal-panel admin-panel">
+      <div class="modal-head"><div><span class="eyebrow">STORE MANAGEMENT</span><h2 id="adminTitle">Admin panel</h2></div><button class="icon-btn" data-close="adminModal" aria-label="Close">×</button></div>
+      <div id="adminLogin">
+        <p class="form-hint">Starter demo access. Change this password in <code>app.js</code> before publishing. This is not secure for a real store.</p>
+        <form id="adminLoginForm" class="form-stack"><label>Demo password<input name="password" type="password" required placeholder="Enter admin password"></label><button class="primary-btn full" type="submit">Open dashboard</button></form>
+      </div>
+      <div id="adminDashboard" class="hidden">
+        <div class="admin-stats"><div><span>Orders</span><b id="adminOrderCount">0</b></div><div><span>Sales total</span><b id="adminSales">৳0</b></div></div>
+        <div class="admin-actions"><button id="exportOrders" class="secondary-btn" type="button">Export orders CSV</button><button id="clearOrders" class="secondary-btn danger" type="button">Clear demo orders</button></div>
+        <h3>Recent orders</h3><div id="adminOrders" class="admin-orders"></div>
+        <h3>Products (edit in app.js)</h3><p class="form-hint">Product names and prices are changed in the PRODUCTS list in app.js.</p>
+        <button id="adminLogout" class="secondary-btn" type="button">Log out</button>
+      </div>
+    </section>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>
